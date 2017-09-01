@@ -20,9 +20,9 @@ app.use(express.static(__dirname + '/public'))
 app.use( bodyParser.json() );
 app.use( cors(corsOptions) );
 
-app.get('/api/name/:name', function(req, res, next){ //change api/name/whatever to get something specific
+app.get('/api/name/:pokedex_id', function(req, res, next){ //change api/name/whatever to get something specific
   var db = req.app.get('db');
-  db.get_pokemon([req.params.name]) //same here
+  db.get_pokemon([req.params.pokedex_id]) //same here
   .then(response => res.status(200).json(response))
   .catch(err => res.status(404).json(err))
 })
