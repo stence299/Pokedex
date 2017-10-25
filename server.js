@@ -22,9 +22,16 @@ app.use( cors(corsOptions) );
 
 app.get('/api/pokemon', function(req, res, next){ //change api/name/whatever to get something specific
   var db = req.app.get('db');
-  db.get_pokemon() //same here
+  db.get_all_pokemon() //same here
   .then(response => res.status(200).json(response))
   .catch(err => res.status(404).json(err))
+})
+
+app.get('/api/pokedex/:id', function(req, res, next){
+    var db = req.app.get('db');
+    db.get_one_pokemon([req.params.pokemon.id])
+    .then(response => res.status(200).json(response))
+    .catch(err => res.status(404).json(err))
 })
 
 app.listen(port, () => {
