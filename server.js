@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const Filter = require('react-filter');
 const massive = require('massive');
 const connectionString = require("./config").dbConnection
 const dbController = require("./dbController.js")
